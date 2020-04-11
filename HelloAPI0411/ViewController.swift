@@ -12,7 +12,17 @@ class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+        let model = APIModel.share
+
+        model.queryRandomUserAlamofire { (res, error) in
+            if error != nil{
+                print(error?.localizedDescription)
+                return
+            }
+            print(res as? Data)
+            
+            
+        }
     }
 
 
