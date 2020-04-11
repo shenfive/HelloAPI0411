@@ -19,6 +19,19 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        can.backgroundColor = UIColor.clear
+        can.clipsToBounds = false
+        can.layer.shadowRadius = 20         //陰影
+        can.layer.shadowOpacity = 0.6;
+        can.layer.shadowColor = UIColor.gray.cgColor
+        can.layer.shadowOffset = CGSize(width: 10, height: 10)
+
+        
+        header.clipsToBounds = true
+        header.layer.cornerRadius = header.frame.width / 2
+        header.layer.borderColor = UIColor.red.cgColor
+        header.layer.borderWidth = 2
+        
         update(self)
     }
 
