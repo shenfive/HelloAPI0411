@@ -8,6 +8,7 @@
 
 import UIKit
 import SwiftyJSON
+import Kingfisher
 
 class ViewController: UIViewController {
     @IBOutlet weak var can: UIView!
@@ -18,7 +19,7 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-
+        update(self)
     }
 
     @IBAction func update(_ sender: Any) {
@@ -41,16 +42,8 @@ class ViewController: UIViewController {
                 
                 let urlString = json["results"][0]["picture"]["medium"].stringValue
                 
-                do {
-                    let url = URL(string: urlString)
-                    let imageData = try Data(contentsOf: url!)
-                    self.header.image = UIImage(data: imageData)
-                } catch  {
-                    print(error)
-                }
+                self.header.kf.setImage(with: URL(string: urlString))
                 
-                
-               
             }
             
             
