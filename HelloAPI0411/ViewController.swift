@@ -15,6 +15,8 @@ class ViewController: UIViewController {
     @IBOutlet weak var header: UIImageView!
     @IBOutlet weak var name: UILabel!
     
+    var timer:Timer!
+    
     @IBOutlet weak var email: UILabel!
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,8 +35,15 @@ class ViewController: UIViewController {
         header.layer.borderWidth = 2
         
         update(self)
+        
+        timer = Timer.scheduledTimer(timeInterval: 10.0, target: self, selector: #selector(updateS(sender:)), userInfo: nil, repeats: true)
+        
     }
 
+    @objc func updateS(sender:Any?){
+        update(self)
+    }
+    
     @IBAction func update(_ sender: Any) {
         let model = APIModel.share
 
